@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nestjs-base-artifact
+  labels:
+    app: nestjs-base-artifact
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nestjs-base-artifact
+  template:
+    metadata:
+      labels:
+        app: nestjs-base-artifact
+    spec:
+      containers:
+        - name: nestjs-base-artifact
+          image: fmbetancourt/nestjs-base-artifact:1.0
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: 'production'
